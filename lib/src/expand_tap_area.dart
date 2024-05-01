@@ -27,6 +27,14 @@ class ExpandTapWidget extends SingleChildRenderObjectWidget {
     onTap: onTap,
     tapPadding: tapPadding,
   );
+
+  @override
+  void updateRenderObject(BuildContext context, _ExpandTapRenderBox renderObject) {
+    super.updateRenderObject(context, renderObject);
+    renderObject
+      ..onTap = onTap
+      ..tapPadding = tapPadding;
+  }
 }
 
 class _TmpGestureArenaMember extends GestureArenaMember {
@@ -52,8 +60,8 @@ class _ExpandTapRenderBox extends RenderBox
     this.tapPadding = EdgeInsets.zero,
   });
 
-  final VoidCallback onTap;
-  final EdgeInsets tapPadding;
+  VoidCallback onTap;
+  EdgeInsets tapPadding;
 
   @override
   void performLayout() {
